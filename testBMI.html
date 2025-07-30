@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div style="text-align: center; background-color: azure;" >
+        <div> <h3>votre poids</h3>
+            <input type="text" id="weight-input" placeholder="en kilogramme">
+        </div>
+
+        <div> <h3>votre taille</h3>
+            <input type="text" id="height-input" placeholder="en metre">
+        </div>
+         <br>
+        <div> 
+            <button id="subbmit-btn"> subbmit </button>
+        </div>
+
+        <h4 id="bmi"> </h4>
+        <h4 id="bmi-category"> </h4>
+
+</div>
+
+
+</body>
+<script>
+    document.getElementById("subbmit-btn").addEventListener("click", function() {
+        var weight = parseFloat(document.getElementById("weight-input").value);
+        var height = parseFloat(document.getElementById("height-input").value);
+        // console.log(weight, height);
+        if (isNaN(weight) || isNaN(height) || height <= 0) {
+            alert("Please enter valid weight and height values.");
+            return;
+        }
+
+        var bmi = weight / (height * height);
+        document.getElementById("bmi").innerHTML = "Your BMI is: " + bmi;
+
+        var category;
+        if (bmi < 18.5) {
+            category = "Underweight";
+        } else if (bmi < 24.9) {
+            category = "Normal weight";
+        } else if (bmi < 29.9) {
+            category = "Overweight";
+        } else {
+            category = "Obesity";
+        }
+        document.getElementById("bmi-category").innerHTML = "BMI Category: " + category;
+    });
+</script>
+</html>
